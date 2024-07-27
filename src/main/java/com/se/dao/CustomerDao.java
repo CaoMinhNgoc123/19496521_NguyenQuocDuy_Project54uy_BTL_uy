@@ -7,9 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.se.entity.Customer;
 
-
 public interface CustomerDao extends JpaRepository<Customer, String> {
 //	public  Customer FindCustomeṛ̣̣̣ById(String maKhachHang);
 //	public  Customer FindCustomeṛ̣̣̣BySoCC(String soCC);
-	
 }

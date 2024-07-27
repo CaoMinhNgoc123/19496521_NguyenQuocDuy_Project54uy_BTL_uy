@@ -3,6 +3,7 @@ package com.se.restcontroller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,13 +22,13 @@ import com.se.service.PhongService;
 
 
 
-@CrossOrigin("*")
+
 @RestController
 @RequestMapping("/rest/phong")
 public class RestPhong {
 	@Autowired
 	PhongService service;
-	@GetMapping()
+	@GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
 	public List<Phong> getAll() {
 		return service.FindALLPhong();
 	}

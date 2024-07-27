@@ -58,7 +58,9 @@ public class Customer implements Serializable{
 	@JsonIgnore
 	@OneToMany(mappedBy = "maKhachHang")
 	List<DatPhong> maDatPhong;
-	
+	@JsonIgnore
+	@OneToMany(mappedBy = "customer")
+	List<Token> Token;
 	public String getMaKhachHang() {
 		return maKhachHang;
 	}

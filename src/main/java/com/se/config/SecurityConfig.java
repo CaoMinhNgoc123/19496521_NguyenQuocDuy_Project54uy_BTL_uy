@@ -60,16 +60,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	  http.csrf().disable();
 	  
 		
-		  http.authorizeRequests() .antMatchers(
-		  "/user/repass", "/user/change").authenticated()// kiểm tra đăng nhập
+		  http.authorizeRequests() .antMatchers("/order/**", "/account/edit",
+		  "/account/repass", "/account/change").authenticated()// kiểm tra đăng nhập
 		  .antMatchers("/admin/**")// kiểm tra quyên athorization
-		  .hasAnyRole("STAFF","ADMIN").anyRequest().permitAll();
+		  .hasAnyRole("STAFF","ADMIN").antMatchers("/rest/authorities/**",
+		  "/assets/admin/authority/index.html")// phải là admin
+		  .hasAnyRole("ADMIN").anyRequest().permitAll();
 		 
 	  
 	  
 	  
 	  http.formLogin().loginPage("/user/sign-in").loginProcessingUrl(
-	  "/user/sign-in").defaultSuccessUrl("/sign-in/success",
+	  "/user/sign-in").defaultSuccessUrl("/admin/home/index",
 	  false).failureUrl("/user/sign-in/erro").permitAll();
 	  
 	  http.rememberMe().tokenValiditySeconds(86400);
